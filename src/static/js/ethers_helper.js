@@ -2058,7 +2058,7 @@ function getErc20Prices(prices, pool, chain="eth") {
       poolUrl=`https://blockscout.com/xdai/mainnet/tokens/${pool.address}`;
       break;
   }
-  
+
   const getDexguruTokenlink =  function() {
     const network = window.location.pathname.split("/")[1]
     let dexguruTokenlink = '';
@@ -2069,7 +2069,7 @@ function getErc20Prices(prices, pool, chain="eth") {
       if (chain && (chain.toLowerCase() === 'bsc' || chain.toLowerCase() === 'eth' || chain.toLowerCase() === 'polygon')) {
         dexguruTokenlink =   `<a href='https://dex.guru/token/${pool.address.toLowerCase()}-${chain.toLowerCase()}' rel='noopener' target='_blank'>[%]</a>`;
       }
-    }      
+    }
     return dexguruTokenlink
   }
 
@@ -2116,7 +2116,7 @@ function getCurvePrices(prices, pool) {
       if (network && (network.toLowerCase() === 'bsc' || network.toLowerCase() === 'eth' || network.toLowerCase() === 'polygon')) {
         dexguruTokenlink =   `<a href='https://dex.guru/token/${pool.address.toLowerCase()}-${network.toLowerCase()}' rel='noopener' target='_blank'>[%]</a>`;
       }
-    }      
+    }
     return dexguruTokenlink
   }
   return {
@@ -2698,6 +2698,6 @@ async function getAverageBlockTime(App){
 }
 
 const displayPrice = price => {
-  const priceDecimals = price == 0 ? 2 : price < 0.0001 ? 10 : price < 0.01 ? 6 : 2;
-  return priceDecimals == 2 ? formatMoney(price) : price.toFixed(priceDecimals);
+  const priceDecimals = price === 0 ? 2 : price < 0.0001 ? 10 : price < 0.01 ? 6 : 2;
+  return priceDecimals === 2 ? formatMoney(price) : price.toFixed(priceDecimals);
 }
