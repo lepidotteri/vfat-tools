@@ -2133,12 +2133,30 @@ function getCurvePrices(prices, pool) {
 }
 
 function getPoolPrices(tokens, prices, pool, chain = "eth") {
-  if (pool.w0 != null) return getValuePrices(tokens, prices, pool);
-  if (pool.poolTokens != null) return getBalancerPrices(tokens, prices, pool);
-  if (pool.isGelato) return getGelatoPrices(tokens, prices, pool);
-  if (pool.token0 != null) return getUniPrices(tokens, prices, pool);
-  if (pool.virtualPrice != null) return getCurvePrices(prices, pool); //should work for saddle too
-  if (pool.token != null) return getWrapPrices(tokens, prices, pool);
+  if (pool.w0 != null) { console.log("1")
+      return getValuePrices(tokens, prices, pool);
+  }
+
+  if (pool.poolTokens != null) { console.log("2")
+      return getBalancerPrices(tokens, prices, pool);
+  }
+
+  if (pool.isGelato) { console.log("3")
+      return getGelatoPrices(tokens, prices, pool);
+  }
+
+  if (pool.token0 != null) { console.log("4")
+      return getUniPrices(tokens, prices, pool);
+  }
+
+  if (pool.virtualPrice != null) { console.log("5")
+      return getCurvePrices(prices, pool);
+  } //should work for saddle too
+
+    if (pool.token != null) { console.log("6")
+        return getWrapPrices(tokens, prices, pool);
+    }
+    console.log("7")
   return getErc20Prices(prices, pool, chain);
 }
 
